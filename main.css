@@ -1,0 +1,317 @@
+/*@import "reset.css"; /*외부 css 파일을 적용하기 위해 사용*/
+/*브라우저는 따로 폰트의 크기가 지정되어 있지 않으면 기본값으로 16px을 사용함*/
+.box{ /*기본적으로 div 요소는 가로너비가 부모요소의 크기만큼 자동으로 늘어남*/
+  width: 300px; /*요소의 가로너비, 
+                  브라우저가 자동으로 요소의 너비를 계산,  
+                  기본값은 auto(요소에 이미 들어있는 속성의 값)
+                  px,em,vw등 단위로 계산*/
+  height: 300px;/*요소의 세로너비, 
+                  px,em,vw등 단위로 계산, 
+                  값을 적지 않으면 최대한 줄어드려고 함*/
+  background-color: orange;
+  /*max-width: 200px; /*요소의 최대 가로너비를 제한, none을 사용하면 최대 너비에 제한이 없어짐*/
+  /*max-height: 200px;/*요소의 최대 세로너비를 제한*/
+  /*min-width:0px; /*요소의 최소 가로너비를 제한, none을 사용하면 최소 너비에 제한이 없어짐*/
+  /*min-height: 0px;/*요소의 최소 세로너비를 제한, 기본값은 0*/
+
+  /*브라우저가 가지고 있는 기본적인 여백이 존재함*/
+}
+
+.box-child{
+  width: 200px;
+  height: 200px;
+  background-color: green;
+}
+
+/*
+ css 속성의 표현 단위
+  
+    
+    px : 픽셀 -> 화면에 사용할 수 있는 px을 사용
+    % : 상대적 백분율 -> 부모 요소가 가지고 있는 너비의 % 만큼 자식요소에 적용하는 것
+    em :  요소의 글꼴 크기, 
+          즉 가로 너비를 10em으로 했다면 160px, 20em으로 했다면 320px이 됨
+          만약 부모 요소에 글꼴 크기가 지정되어 있다면 그것이 기준이 됨
+          부모 요소에 선언된 글꼴 크기가 10px이라면 자식 요소의 가로너비에 10em을 사용하면 100px이 되는것
+    rem : 루트 요소(html)의 글꼴 크기
+          즉 가로 너비를 10rem으로 했다면 160px, 20rem으로 했다면 320px이 됨
+    vw :  뷰포트 가로 너비의 백분율
+          50vw면 뷰포트의 절반너비만큼 사용
+    vh :  뷰포트 세로 너비의 백분율
+  
+*/
+/*
+margin -> 요소의 외부 여백을 지정하는 단축속성
+          요소 바깥쪽에 공간을 만들어내는 개념
+          기본값은 0, auto로 설정할 경우 브라우저가 여백을 계산
+          px,em,vw등 단위로 지정 가능
+          음수를 사용할 수 있다
+padding -> 요소의 내부 여백을 지정하는 단축속성
+            요소 자체의 크기가 커지는 성질을 가짐
+            기본값은 0, margin과 동일하게 단위로 지정 가능
+            %를 사용하여 부모 요소의 가로 너비에 대한 비율을 지정 가능
+*/
+
+.container{
+
+}
+.container .item{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  margin: 10px; /*이 경우엔 위,아래,좌,우 모두 10px의 여백을 주는 것*/
+  /*margin: 10px 20px; -> 이 경우에는 위,아래 여백에는 10px, 좌우 여백에는 20px을 주는 의미*/
+  /*margin: 10px 20px 30px -> 위 10px, 좌우 20px, 아래 30px의 바깥여백*/
+  /*margin: 10px 20px 30px 40px -> 위 10px, 우 20px, 아래 30px, 좌 40px의 여백을 준다는 의미*/
+  margin-left: 20px; /*각각의 방향을 지정하여 사용할 수 잇음*/
+}
+.padding{
+
+}
+.padding .item{
+  width: 100px;
+  height: 100px;
+  background-color: orange;
+  border: 4px solid red;
+}
+.padding .item:first-child{
+  padding: 20px;
+  /*
+    padding 도 margin과 마찬가지로 각 방향에 여백의 크기를 지정해 줄 수 있음
+    지정 방식은 margin과 동일
+  */
+}
+
+/*
+요소의 테두리 선을 지정하는 단축 속성
+border: 선-두께(border-width) 선-종류(border-style) 선-색상(border-color)
+테두리 선이 들어가면 그만큼 요소의 크기가 커짐
+선의 색상의 기본값은 black
+색상을 표현할땐 색상이름, 색상코드, rgb, rgba값을 사용할 수 있음
+선의 종류는 보통 none(선 없음), solid(실선), dashed(파선)를 씀
+border-radius 속성을 통해 요소의 모서리를 둥글게 깎음
+기본값은 0, 그 외에는 특정 수치를 입력하여 적용할 수 잇음
+*/
+
+.border .item{
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+.border .item:first-child{
+  border:10px solid black;
+  border-radius: 50%;
+}
+
+/*
+box-sizing -> 요소의 크기 계산 기준을 지정
+              기본값은 content-box(요소의 내용으로 크기 계산)
+              또는 border-box (요소의 내용 + padding+ border로 크기 계산)
+
+*/
+
+.border-box .item{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+.border-box .item:first-child{
+  border: 4px solid black;
+  padding: 20px;
+  box-sizing: border-box; /*가로, 세로너비를 지정한 수치 그대로 사용하고 싶다면 사용*/
+}
+
+/*
+overflow -> 요소의 크기 이상으로 내용이 넘쳤을 때, 보여짐을 제어하는 단축속성
+            visible -> 기본값, 넘친 내용을 그대로 보여줌
+            hidden -> 넘친 내용을 잘라냄
+            auto -> 넘친 내용이 있는 경우에만 잘라내고 스크롤바 생성
+            scroll -> 넘친 부분에 한하여 가로 또는 세로 스크롤바 생성
+          개별 속성들
+          overflow-x -> x축으로 넘치는 부분만 체크
+          overflow-y -> y축으로 넘치는 부분만 체크
+*/
+
+/*
+display -> 요소의 화면 출력의 특성을 지정
+            어떻게 보여지는지에 대한 특성을 지정함
+          block ->  블록(레이아웃) 요소로 보여지게 지정
+          inline -> 인라인(글자) 요소로 보여지게 지정
+          inline-block - 글자+상자요소로 보여지게 지정
+          flex ->  플렉스 박스(1차원 레이아웃)
+          grid -> 그리드(2차원 레이아웃)
+          none -> 화면에서 사라짐
+          table, table-row, table-cell등이 있음
+*/
+
+span{
+  /*span 태그는 인라인 요소기에 가로너비와 세로너비를 지정할 수 없음*/
+  width: 120px;
+  height: 30px;
+  background-color: royalblue;
+  color: white;
+  display: block; 
+  /*하지만 display 속성을 이용해서 요소의 특성을 지정해 줄 수 있음*/
+}
+
+/*
+opacity ->  요소의 투명도를 지정
+            0 -> 완전한 투명
+            0~1사이의 소숫점 -> 비율에 맞게 투명도를 제어함
+
+*/
+
+/*
+글꼴
+font-size -> 글꼴의 크기
+              기본 크기는 16px, 원하는 단위를 이용하여 임의로 지정 가능
+font-weight ->  글꼴의 두께
+                기본값은 normal(400)
+                bold(700) ->  두께를 두껍께
+                100~900 중 100단위의 숫자를 이용해 임의로 두께를 지정할 수 있음
+font-style -> 글자의 기울기
+              기본값은 normal
+              italic 을 사용하여 이탤릭체를 사용할 수 있음
+
+line-height -> 한 줄의 높이, 행간과 유사함
+              숫자를 이용해 요소의 글꼴 크기의 배수로 지정 가능
+              배수의 기준은 그 요소가 가진 font-size가 기준이 됨
+              px같은 단위를 이용해 지정 가능
+              행간을 사용하면 글자는 그 가운데에 위치하게 됨
+
+font-family -> 글꼴을 지정하게 됨
+              글꼴 후보를 쉼표(,)를 기준으로 여러개를 지정할 수 있음
+              글꼴을 선택한 후 마지막에 글꼴 계열을 지정해줘야함
+*/
+
+/*
+문자
+color -> 글자의 색상을 지정
+        rgb값이나 원하는 색상을 지정하여 사용 가능
+text-align -> 문자의 정렬방식 지정
+              left -> 기본값, 왼쪽으로 정렬
+              right -> 오른쪽으로 정렬
+              center -> 가운데 정렬
+text-decoration -> 문자의 장식(선)
+                  none -> 장식 없음
+                  underline -> 밑줄
+                  line-through -> 중앙 선
+text-indent -> 문자 첫줄의 들여쓰기
+                기본값은 0(들여쓰기 없음)
+                px 등의 단위로 원하는 값 지정 가능
+                음수를 사용하면 내어쓰기가 됨
+*/
+
+
+/*
+배경
+background-color -> 배경의 색상 지정
+                    기본값은 transparent -> 투명한 상태
+                    별도의 원하는 색상을 지정 가능
+background-image -> 요소의 배경에 이미지 삽입 가능
+                    url("원하는 이미지의 경로")를 이용하여 삽입 가능
+background-size -> 배경에 삽입한 이미지의 크기를 조절 가능
+                    기본값은 auto -> 이미지의 실제 크기
+                    px 등 단위로 제어 가능
+                    cover -> 비율을 유지하고 요소의 더 넓은 너비에 맞춤
+                    contain -> 비율을 유지하고 요소의 더 짧은 너비에 맞춤
+background-repeat -> 요소의 배경 이미지의 반복을 제어 가능
+                    기본값은 repeat
+                    repeat-x -> x축으로 반복
+                    repeat-y -> y축으로 반복
+                    no-repeat -> 반복하지 않음
+background-position -> 요소의 배경 이미지의 위치 제어
+                      방향(top,bottom,left,right,center)
+                      px등 단위로 지정 가능(x축, y축)
+background-attachment -> 요소의 배경 이미지의 스크롤 특성 지정
+                          기본값은 scroll -> 이미지가 요소를 따라서 같이 스크롤
+                          fixed -> 이미지가 뷰포트에 고정되어 스크롤이 안됨
+*/
+
+.background{
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/f/f2/Chocolate.jpg");
+    /*이미지를 요소의 배경으로 삽입한 것 이기 때문에 온전히 보이지 않을 수 있음*/
+    background-size: 200px;
+    /*배경으로 삽입한 이미지의 크기 조절 가능, 단 여러개가 출력 될 수 있음*/
+    background-repeat: no-repeat;
+    /*배경이미지의 반복 출력을 제어하는 속성*/
+    background-position: center;
+    /*배경의 이미지를 원하는 위치에 배치 가능*/
+
+  }
+
+  /*
+  배치와 관련된 속성
+  posiiton -> 요소의 배치에 관련된 속성
+              요소의 위치 지정 기준
+              배치할 때는 기준을 잡고 나서 위치를 정해줘야 함
+              기본값은 static -> 기준 없음
+
+              relative -> 요소 자신을 기준으로 배치
+              배치 전 자리는 시각적으로는 비어있음
+
+              absolute -> 위치 상 부모 요소를 기준으로 배치
+              이 속성이 부여된 요소의 주변과의 상호작용이 무너짐
+              display요소가 변경될 수 있음
+              만약 인라인 요소에 이 속성을 부여하면, 블록요소로 바뀜
+
+              fixed -> 뷰포트(브라우저)를 기준
+              같이 사용하는 css 속성들로는 top, bottom, right, left, z-index를 사용할 수 있음
+              이 개별 속성들은 요소의 각 방향별 거리를 지정함
+              모두 음수를 사용할 수 있음
+              display 속성이 block 요소로 바뀌는 성질이 있음
+
+              요소 쌓임 순서 -> 어떤 요소가 사용자와 더 가깝게 있는지(위에 쌓이는지) 결정
+              1. 요소에 position 속성의 값이 있는 경우 위에 쌓임
+              2. 1번 조건이 같은 경우, z-index 속성의 숫자값이 높을수록 위에 쌓임
+              3. 1번과 2번 조건이 같은 경우, html의 다음 구조일 수록 위에 쌓임
+
+
+              z-index -> 요소의 쌓임 정도를 지정
+                          기본값은 auto -> 부모 요소와 동일한 쌓임 정도
+                          값으로 숫자를 줄 수 있고 숫자가 높을수록 위에 쌓임
+  */
+  .wrap{
+    width: 400px;
+    height: 300px;
+    background-color: tomato;
+    
+  }
+
+
+  .position{
+    width: 300px;
+    background-color: royalblue;
+    position: relative;
+    /*자식 요소에 position:absolute를 사용했다면 구조상의 부모요소에 relative 속성을 부여함으로써 
+    위치상 부모요소로 지정*/
+    
+  }
+  .position .item{
+    border: 4px dashed red;
+    background-color: orange;
+  }
+  .position .item:nth-child(1){
+    width: 100px;
+    height: 100px;
+  }
+  .position .item:nth-child(2){
+    width: 140px;
+    height: 70px;
+    position: absolute; 
+    /*위치상 부모요소가 뷰포트가 되어버림*/
+    /*구조상 부모요소에 position:relative를 선언해 주어야 원래 의도햇던대로 사용 가능*/
+    top: 30px;
+    left: 20px;
+    
+
+    
+  }
+  .position .item:nth-child(3){
+    width: 70px;
+    height: 120px;
+  }

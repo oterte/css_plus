@@ -1,0 +1,81 @@
+/*
+플렉스(정렬) -> 1차원의 레이아웃을 만드는 개념
+                display: flex를 통해 수평정렬을 손쉽게 만들 수 있음
+                display: flex가 부여된 요소는 flex container
+                flex container의 자식 요소들이 flex items
+
+                flex container에 부여하는 속성
+                1. display -> flex container의 화면 출력 특성
+                    flex -> 블록 요소와 같이 flex container 정의
+                    inline-flex -> 인라인 요소와 같이 flex container 정의
+                2. flex-flow, flex-direction, flex-wrap
+                    flex-flow -> flex-item의 방향과 줄바꿈을 제어하는 단축 속성
+                    flex-direction -> 주 축을 설정(수평정렬이냐 수직정렬이냐)
+                      row -> 행축(좌에서 우로)
+                      row-reverse -> 행축(우에서 좌로)
+                    flex-wrap -> flex items 묶음 여부
+                      nowrap -> 묶음(줄바꿈) 없음
+                      wrap -> 여러 줄로 묶음, 줄바꿈이 일어남
+                    기본적으로 flex container는 한 줄에서 모든 요소를 표시하려고 시도함
+                    만약 그것이 문제가 된다면 줄바꿈 속성을 이용하면 됨
+                3. justify-content -> 주 축(수평)의 정렬 방법, 수평정렬
+                    flex-start -> flex items 를 시작점으로 정렬, 기본값
+                    flex-end -> flex items를 끝점으로 정렬
+                    center -> flex items를 가운데 정렬
+                4. align-content -> 교차 축(수직)의 여러줄 정렬 방법, 수직정렬
+                    여러줄이 있어야하며 기본적으로 줄바꿈이 가능(flex-wrap:wrap)해야 하고, 
+                    정렬이 가능한 빈 공간이 부모요소에 존재해야 함
+                    stretch -> flex items를 시작점으로 정렬, 기본값
+                    flex-start -> flex items를 시작점으로 정렬
+                    flex-end -> flex items를 끝점으로 정렬
+                    center -> flex items를 가운데 정렬
+
+                5. align-items -> 교차 축의 한 줄 정렬방법(수직정렬)
+                    stretch -> flex items를 교차 축으로 늘림, 기본값
+                    flex-start -> flex items를 각 줄의 시작점으로 정렬, 전체 요소를 각 줄의 위쪽으로 정렬
+                    flex-end -> flex items를 각 줄의 끝점으로 정렬, 전체 요소를 각 줄의 아래쪽으로 정렬
+                    center -> flex items를 각 줄의 가운데 정렬
+
+                flex items에 부여하는 속성
+                1. order -> flex item의 순서, 요소의 순서를 임의대로 바꿔줄 수 있음, 기본값은 0
+                            숫자를 사용할 경우, 숫자가 작을수록 먼저
+                            음수도 사용 가능
+                2. flex, flex-grow, flex-shrink, flex-basis
+                  flex-grow -> 각각의 요소가 얼마만큼 늘어나는지 비율을 명시함
+                              flex item의 증가 너비 비율 
+                              기본값은 0
+                              1을 선언하면 각 요소의 너비가 1:1비율로 늘어남
+                  flex-shrink -> flex item의 감소 너비 비율
+                              기본값은 1, flex container 너비에 따라 감소 비율 적용
+                              숫자에 따라 감소 비율이 달라짐
+                  flex-basis -> flex item의 공간 배분 전 기본 너비
+                              기본값은 auto, 요소의 content 너비
+                              px등 단위를 사용 가능
+                3. align-self
+
+
+
+*/
+
+
+.position{
+  width: 400px;
+  
+  background-color: royalblue;
+  display: flex;
+  /*수직으로 쌓여있던 요소들이 수평으로 정렬됨*/
+  flex-wrap: wrap;
+  /*칸이 모자르면 줄바꿈 처리를 해주면 됨*/
+  justify-content: flex-start;
+}
+.position .item{
+  width: 100px;
+  height: 100px;
+  border: 3px dashed red;
+  background-color: orange;
+  flex-grow: 1; /*각 요소의 너비의 비율을 1로*/
+  flex-basis: 0;
+}
+.position .item:nth-child(3){
+  flex-grow: 2;/*세번째 요소의 너비의 비율을 2로*/
+}

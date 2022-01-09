@@ -1,0 +1,80 @@
+.box{
+  background-color: orange;
+  width: 100px;
+  height: 100px;
+}
+.box:hover{ /*가상 클래스 선택자 hover
+              마우스 커서를 요소 위에 올리면 적용되는 속성*/
+  width: 300px;
+}
+.box:active{/*가상 클래스 선택자 active
+              요소에 마우스를 클릭하는 동안 적용되는 속성*/
+  background-color: green;
+}
+input{
+
+}
+input:focus{/*요소가 포커스 되면 선택하는 가상 클래스 선택자
+              focus 선택자는 input, a, button, label, select등 html 대화형 컨텐츠에만 적용할 수 있음*/
+  background-color: orange;
+}
+
+.box span:first-child{/*선택자 span이 형제 요소중 첫째라면 선택하는 가상 클래스 선택자*/
+  color: red;
+}
+
+.box span:last-child{/*선택자 span이 형제 요소중 막내라면 선택하는 가상 클래스 선택자*/
+  color: red;
+}
+.box *:nth-child(2){/*전체 형제 요소 중 n번째를 선택하는 선택자
+                      여기서 n이라는 키워드는 0부터 시작함
+                      만약 2n이라면 n X 2(2,4,6...)번째에 해당하는 요소들을 선택함*/
+  color: blue;
+}
+.fruits *:not(span){
+  /*선택자 span이 아닌것을 선택하는 선택자*/
+  color:red;
+}
+/*
+  속성 선택자: 속성 ABC를 포함한 요소 선택
+  [disabled], [type]
+*/
+[disabled]{
+  color: red;
+}
+[type]{
+  color: green;
+}
+/*
+  속성 ABC를 포함하고 값이 XYZ인 요소 선택
+*/
+[type="password"]{
+  color: yellow;
+}
+/*
+스타일 상속 : 부모 요소에 적용된 css 스타일은 그 부모 요소의 하위 요소들 모두에 적용된다
+  단, 상속이 적용되는 속성들은 모두 글자, 문자 관련 속성들이다(기울기, 두께, 크기, 높이, 색상, 폰트, 정렬 등)
+
+
+강제 상속: inherit 속성을 사용해 부모 요소의 속성을 상속하여 사용할 수 있다
+*/
+.parent{
+  width: 300px;
+}
+.child{
+  width: inherit;
+}
+
+/*선택자 우선순위
+  같은 요소가 여러 선언의 대상이 된 경우, 어떤 선언의 css 속성을 우선 적용할지 결정하는 방법
+  1. 점수가 높은 선언이 우선함
+  2. 점수가 같으면, 가장 마지막에 해석된 선언이 우선함
+  점수 명시도
+  css 스타일 !important -> 9999999999점
+  css 스타일을 인라인 선언 했을 때 -> 1000점
+  id 선택자 -100점
+  class 선택자 - 10점
+  태그 선택자 - 1점
+  전체 선택자(*) - 0점
+
+*/
